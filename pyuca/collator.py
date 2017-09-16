@@ -43,7 +43,7 @@ class BaseCollator(object):
             for line in keys_file:
                 line = line.split("#", 1)[0].rstrip()
 
-                if not line or line.startswith("@version"):
+                if not line or line.startswith("@version")  or line.startswith("@implicitweights"):
                     continue
 
                 a, b = line.split(";", 1)
@@ -123,8 +123,8 @@ class BaseCollator(object):
         return [ord(ch) for ch in text]
 
 
-class Collator_6_3_0(BaseCollator):
-    UCA_VERSION = '6.3.0'
+class Collator_10_0_0(BaseCollator):
+    UCA_VERSION = '10.0.0'
 
 
 class Collator_5_2_0(BaseCollator):
@@ -156,4 +156,4 @@ class Collator_5_2_0(BaseCollator):
 if sys.version_info < (3,):
     Collator = Collator_5_2_0
 else:
-    Collator = Collator_6_3_0
+    Collator = Collator_10_0_0
